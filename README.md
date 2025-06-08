@@ -1,5 +1,6 @@
 ![wp13126220](https://github.com/user-attachments/assets/33490bda-7577-41e1-9711-8df466750fa8)
 
+# It's a repository of Rust 
 <a href="https://www.rust-lang.org/"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Rust_programming_language_black_logo.svg" align="right" height="77"></a>
 
 **Rust** é uma linguagem de programação compilada, multiparadigma, desenvolvida inicialmente pela Mozilla Research. Ela combina o desempenho de linguagens como C/C++ com garantias de segurança de memória sem precisar de garbage collector. Rust e Go (Golang) compartilham algumas semelhanças conceituais, mas suas filosofias de design, propósitos e escolhas técnicas são bastante diferentes.
