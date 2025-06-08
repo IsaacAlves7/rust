@@ -55,7 +55,7 @@ Use Rust se você precisa de:
 - Alta segurança de memória e concorrência complexa
 - Zero runtime e performance máxima
 
-<img src="https://github.com/user-attachments/assets/fed87b8d-7fd8-4988-91b1-1d80b9e46f0d" align="right" height="77">
+<a href="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024"><img src="https://github.com/user-attachments/assets/fed87b8d-7fd8-4988-91b1-1d80b9e46f0d" align="right" height="77"></a>
 
 O "crab" (caranguejo em inglês) é uma referência ao mascote da linguagem Rust, chamado **Ferris** que é um caranguejo simpático, criado pela comunidade Rust, e foi adotado como símbolo não-oficial da linguagem. Às vezes, a comunidade se refere aos desenvolvedores Rust como "crabby" ou fala coisas como "c**rust**acean coding", mas isso é só brincadeira.
 
