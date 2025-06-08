@@ -34,3 +34,9 @@ Verificando a instalação correta do compilador da linguagem Rust:
 ```sh
 rustc --version
 ```
+
+Iniciando o diretório: Após a criação do diretório `main`
+
+```sh
+cargo init
+```
