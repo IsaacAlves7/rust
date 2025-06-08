@@ -11,7 +11,15 @@ A linguagem apareceu como um projeto pessoal de Graydon Hoare, empregado da Mozi
 
 Foi considerada pelo público a linguagem "mais amada" por nove anos consecutivos, de acordo com pesquisas conduzidas pelo site Stack Overflow de 2016 a 2024, e está entre as 25 linguagens mais populares, de acordo com pesquisas conduzidas pela RedMonk desde 2018.
 
-Rust e Go (Golang) compartilham algumas semelhanças conceituais, mas suas filosofias de design, propósitos e escolhas técnicas são bastante diferentes.
+Rust e Go (Golang) compartilham algumas semelhanças conceituais, mas suas filosofias de design, propósitos e escolhas técnicas são bastante diferentes. Suas semelhanças incluem:
+
+- **Desempenho alto**: Ambas as linguagens são compiladas para código nativo, o que significa que entregam desempenho comparável ao C/C++. São ótimas escolhas para sistemas de baixa latência, alta performance e que exigem controle de recursos.
+
+- **Segurança na memória**: Tanto Rust quanto Go evitam falhas comuns em C/C++ como segfaults, uso de ponteiros inválidos e data races (corridas de dados), embora o façam de formas diferentes: Go usa coletor de lixo (garbage collector), já Rust usa ownership e borrowing com verificação em tempo de compilação — sem GC.
+
+- **Foco em concorrência**: Go é conhecido pelas `goroutines` e `channels`, que facilitam a escrita de código concorrente. Rust tem um sistema de concorrência segura por design, evitando data races com checagens em tempo de compilação. Usa threads, async/await e crates como `tokio`.
+
+- **Simplicidade de uso comparado a C/C++**: Ambas foram projetadas como alternativas modernas às linguagens de baixo nível como C, oferecendo mais segurança, produtividade e melhores ferramentas.
 
 Diferenças marcantes entre Go e Rust:
 
