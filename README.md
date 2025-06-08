@@ -33,7 +33,13 @@ Diferenças marcantes entre Go, Rust e Elixir:
 | **Tempo de compilação**      | Rápido                                    | Mais lento                                                      |
 | **Comunidade corporativa**   | Google, Uber, Dropbox                     | Mozilla, AWS, Microsoft                                         |
 
-Quando escolher Go ou Rust?
+Quando escolher Go ou Rust ou Elixir? Veja abaixo o ecossistema e casos de uso:
+
+| Linguagem  | Casos de Uso Comuns                                             |
+| ---------- | --------------------------------------------------------------- |
+| **Rust**   | Sistemas embarcados, CLI, WebAssembly, engines, bancos de dados |
+| **Go**     | Microserviços, APIs, ferramentas de rede, DevOps, cloud         |
+| **Elixir** | Chat, mensageria, telecom, sistemas distribuídos, IoT           |
 
 Use Go se você quer:
 
