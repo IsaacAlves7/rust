@@ -33,6 +33,22 @@ Diferenças marcantes entre Go e Rust:
 | **Tempo de compilação**      | Rápido                                    | Mais lento                                                      |
 | **Comunidade corporativa**   | Google, Uber, Dropbox                     | Mozilla, AWS, Microsoft                                         |
 
+Quando escolher Go ou Rust?
+
+Use Go se você quer:
+
+- Produtividade rápida
+- Concorrência simples (ex: servidores web, microserviços)
+- Facilidade de leitura e manutenção por equipes grandes
+- Curva de aprendizado mais suave
+
+Use Rust se você precisa de:
+
+- Máximo controle e segurança sem coletor de lixo
+- Programação de sistemas, drivers, engines de jogos, ou aplicações críticas de performance
+- Alta segurança de memória e concorrência complexa
+- Zero runtime e performance máxima
+
 <img src="https://github.com/user-attachments/assets/fed87b8d-7fd8-4988-91b1-1d80b9e46f0d" align="right" height="77">
 
 O "crab" (caranguejo em inglês) é uma referência ao mascote da linguagem Rust, chamado **Ferris** que é um caranguejo simpático, criado pela comunidade Rust, e foi adotado como símbolo não-oficial da linguagem. Às vezes, a comunidade se refere aos desenvolvedores Rust como "crabby" ou fala coisas como "c**rust**acean coding", mas isso é só brincadeira.
