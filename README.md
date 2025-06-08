@@ -80,3 +80,8 @@ cargo init
 ```
 
 ## [Rust] Hello, World!
+```rust
+fn main() {
+    println!("Hello, world!");
+}
+```
