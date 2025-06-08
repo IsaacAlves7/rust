@@ -80,6 +80,8 @@ cargo init
 ```
 
 ## [Rust] Hello, World!
+[![docker-compose.yaml](https://img.shields.io/badge/-main.rs-brown?style=social&logo=rust&logoColor=brown)](#)
+
 ```rust
 fn main() {
     println!("Hello, world!");
