@@ -82,7 +82,7 @@ cargo init
 ## [Rust] Hello, World!
 A função `fn main()` não recebe nenhum valor de entrada, visto que os parênteses estão vazios.
 
-[![main.rs](https://img.shields.io/badge/-main.rs-brown?style=social&logo=rust&logoColor=brown)](#)
+[![main.rs](https://img.shields.io/badge/-main.rs-E6C3A5?style=social&logo=rust&logoColor=E6C3A5)](#)
 
 ```rust
 fn main() {
