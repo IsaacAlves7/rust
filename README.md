@@ -11,7 +11,7 @@ A linguagem apareceu como um projeto pessoal de Graydon Hoare, empregado da Mozi
 
 Foi considerada pelo público a linguagem "mais amada" por nove anos consecutivos, de acordo com pesquisas conduzidas pelo site Stack Overflow de 2016 a 2024, e está entre as 25 linguagens mais populares, de acordo com pesquisas conduzidas pela RedMonk desde 2018.
 
-Rust e Go (Golang) compartilham algumas semelhanças conceituais, mas suas filosofias de design, propósitos e escolhas técnicas são bastante diferentes. Suas semelhanças incluem:
+Rust, Go (Golang) e Elixir são linguagens modernas que surgiram para resolver problemas distintos do desenvolvimento de software, mas compartilham algumas ideias em termos de desempenho, concorrência e segurança. Abaixo, segue uma análise comparativa destacando semelhanças e diferenças entre elas:
 
 - **Desempenho alto**: Ambas as linguagens são compiladas para código nativo, o que significa que entregam desempenho comparável ao C/C++. São ótimas escolhas para sistemas de baixa latência, alta performance e que exigem controle de recursos.
 
@@ -21,7 +21,7 @@ Rust e Go (Golang) compartilham algumas semelhanças conceituais, mas suas filos
 
 - **Simplicidade de uso comparado a C/C++**: Ambas foram projetadas como alternativas modernas às linguagens de baixo nível como C, oferecendo mais segurança, produtividade e melhores ferramentas.
 
-Diferenças marcantes entre Go e Rust:
+Diferenças marcantes entre Go, Rust e Elixir:
 
 | Aspecto                      | Go                                        | Rust                                                            |
 | ---------------------------- | ----------------------------------------- | --------------------------------------------------------------- |
