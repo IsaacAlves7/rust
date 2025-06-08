@@ -40,3 +40,5 @@ Iniciando o diretório: Após a criação do diretório `main`
 ```sh
 cargo init
 ```
+
+## [Rust] Hello, World!
