@@ -5,6 +5,18 @@
 
 **Rust** é uma linguagem de programação compilada, multiparadigma, desenvolvida inicialmente pela Mozilla Research. Ela combina o desempenho de linguagens como C/C++ com garantias de segurança de memória sem precisar de garbage collector. Rust e Go (Golang) compartilham algumas semelhanças conceituais, mas suas filosofias de design, propósitos e escolhas técnicas são bastante diferentes.
 
+Diferenças marcantes entre Go e Rust:
+
+| Aspecto                      | Go                                        | Rust                                                            |
+| ---------------------------- | ----------------------------------------- | --------------------------------------------------------------- |
+| **Gerenciamento de memória** | Coletor de lixo (GC)                      | Ownership e borrowing sem GC                                    |
+| **Concorrência**             | Simples, nativa com goroutines e channels | Mais complexo, mas seguro (async/await, threads, `tokio`)       |
+| **Curva de aprendizado**     | Baixa: fácil para iniciantes              | Alta: exige mais entendimento técnico                           |
+| **Orientação a objetos**     | Estruturas simples com métodos            | Traits e generics poderosos                                     |
+| **Erros**                    | Erros são tratados com valores retornados | Sistema de tipos com `Result` e `Option`, forçando o tratamento |
+| **Tempo de compilação**      | Rápido                                    | Mais lento                                                      |
+| **Comunidade corporativa**   | Google, Uber, Dropbox                     | Mozilla, AWS, Microsoft                                         |
+
 <img src="https://github.com/user-attachments/assets/fed87b8d-7fd8-4988-91b1-1d80b9e46f0d" align="right" height="77">
 
 O "crab" (caranguejo em inglês) é uma referência ao mascote da linguagem Rust, chamado **Ferris** que é um caranguejo simpático, criado pela comunidade Rust, e foi adotado como símbolo não-oficial da linguagem. Às vezes, a comunidade se refere aos desenvolvedores Rust como "crabby" ou fala coisas como "c**rust**acean coding", mas isso é só brincadeira.
