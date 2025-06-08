@@ -8,6 +8,14 @@ O "crab" (caranguejo em inglês) é uma referência ao mascote da linguagem Rust
 
 Porque em inglês, o termo "rust" (ferrugem) remete a ferrugem de ferro, e "ferris" é um trocadilho com "ferrous" (ferroso). A ideia era ter algo fofo, memorável e relacionado a ferrugem — daí veio o caranguejo Ferris, com suas patinhas representando segurança e controle (características centrais do Rust).
 
+Verificando a instalação correta da linguagem Rust:
+
 ```sh
 cargo --version
+```
+
+Verificando a instalação correta do compilador da linguagem Rust:
+
+```sh
+rustc --version
 ```
