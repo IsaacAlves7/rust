@@ -23,15 +23,15 @@ Rust, Go (Golang) e Elixir são linguagens modernas que surgiram para resolver p
 
 Diferenças marcantes entre Go, Rust e Elixir:
 
-| Aspecto                      | Go                                        | Rust                                                            |
-| ---------------------------- | ----------------------------------------- | --------------------------------------------------------------- |
-| **Gerenciamento de memória** | Coletor de lixo (GC)                      | Ownership e borrowing sem GC                                    |
-| **Concorrência**             | Simples, nativa com goroutines e channels | Mais complexo, mas seguro (async/await, threads, `tokio`)       |
-| **Curva de aprendizado**     | Baixa: fácil para iniciantes              | Alta: exige mais entendimento técnico                           |
-| **Orientação a objetos**     | Estruturas simples com métodos            | Traits e generics poderosos                                     |
-| **Erros**                    | Erros são tratados com valores retornados | Sistema de tipos com `Result` e `Option`, forçando o tratamento |
-| **Tempo de compilação**      | Rápido                                    | Mais lento                                                      |
-| **Comunidade corporativa**   | Google, Uber, Dropbox                     | Mozilla, AWS, Microsoft                                         |
+| Aspecto                      | Go                                        | Rust                                                            | Elixir                                                         |
+| ---------------------------- | ----------------------------------------- | --------------------------------------------------------------- |--------------------------------------------------------------- |
+| **Gerenciamento de memória** | Coletor de lixo (GC)                      | Ownership e borrowing sem GC                                    |                                                                |
+| **Concorrência**             | Simples, nativa com goroutines e channels | Mais complexo, mas seguro (async/await, threads, `tokio`)       |                                                                |
+| **Curva de aprendizado**     | Baixa: fácil para iniciantes              | Alta: exige mais entendimento técnico                           |                                                                |
+| **Orientação a objetos**     | Estruturas simples com métodos            | Traits e generics poderosos                                     |                                                                |
+| **Erros**                    | Erros são tratados com valores retornados | Sistema de tipos com `Result` e `Option`, forçando o tratamento |                                                                |
+| **Tempo de compilação**      | Rápido                                    | Mais lento                                                      |                                                                |
+| **Comunidade corporativa**   | Google, Uber, Dropbox                     | Mozilla, AWS, Microsoft                                         |                                                                |
 
 Quando escolher Go ou Rust ou Elixir? Veja abaixo o ecossistema e casos de uso:
 
