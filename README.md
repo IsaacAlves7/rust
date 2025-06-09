@@ -25,13 +25,13 @@ Diferenças marcantes entre Go, Rust e Elixir:
 
 | Aspecto                      | Go                                        | Rust                                                            | Elixir                                                         |
 | ---------------------------- | ----------------------------------------- | --------------------------------------------------------------- |--------------------------------------------------------------- |
-| **Gerenciamento de memória** | Coletor de lixo (GC)                      | Ownership e borrowing sem GC                                    | Garbage collector (BEAM)                                       |
-| **Concorrência**             | Simples, nativa com goroutines e channels | Mais complexo, mas seguro (async/await, threads, `tokio`)       | Processos leves (actor model)                                  |
-| **Curva de aprendizado**     | Baixa: fácil para iniciantes              | Alta: exige mais entendimento técnico                           |                                                                |
+| **Gerenciamento de memória** | Coletor de lixo (GC)                      | Ownership e borrowing sem GC                                    | Garbage collector (BEAM VM)                                    |
+| **Concorrência**             | Simples, nativa com goroutines e channels | Mais complexo, mas seguro (async/await, threads, `tokio`)       | Altamente concorrente via Actor Model (processos leves do BEAM)|
+| **Curva de aprendizado**     | Baixa: fácil para iniciantes              | Alta: exige mais entendimento técnico                           | Média: exige entender paradigma funcional e arquitetura OTP    |
 | **Orientação a objetos**     | Estruturas simples com métodos            | Traits e generics poderosos                                     |                                                                |
 | **Erros**                    | Erros são tratados com valores retornados | Sistema de tipos com `Result` e `Option`, forçando o tratamento |                                                                |
 | **Tempo de compilação**      | Rápido                                    | Mais lento                                                      |                                                                |
-| **Comunidade corporativa**   | Google, Uber, Dropbox                     | Mozilla, AWS, Microsoft                                         |                                                                |
+| **Comunidade corporativa**   | Google, Uber, Dropbox                     | Mozilla, AWS, Microsoft                                         | WhatsApp, Discord (usando Erlang/Elixir), PagerDuty            |
 
 Quando escolher Go ou Rust ou Elixir? Veja abaixo o ecossistema e casos de uso:
 
