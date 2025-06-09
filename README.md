@@ -25,8 +25,8 @@ Diferenças marcantes entre Go, Rust e Elixir:
 
 | Aspecto                      | Go                                        | Rust                                                            | Elixir                                                         |
 | ---------------------------- | ----------------------------------------- | --------------------------------------------------------------- |--------------------------------------------------------------- |
-| **Gerenciamento de memória** | Coletor de lixo (GC)                      | Ownership e borrowing sem GC                                    |                                                                |
-| **Concorrência**             | Simples, nativa com goroutines e channels | Mais complexo, mas seguro (async/await, threads, `tokio`)       |                                                                |
+| **Gerenciamento de memória** | Coletor de lixo (GC)                      | Ownership e borrowing sem GC                                    | Garbage collector (BEAM)                                       |
+| **Concorrência**             | Simples, nativa com goroutines e channels | Mais complexo, mas seguro (async/await, threads, `tokio`)       | Processos leves (actor model)                                  |
 | **Curva de aprendizado**     | Baixa: fácil para iniciantes              | Alta: exige mais entendimento técnico                           |                                                                |
 | **Orientação a objetos**     | Estruturas simples com métodos            | Traits e generics poderosos                                     |                                                                |
 | **Erros**                    | Erros são tratados com valores retornados | Sistema de tipos com `Result` e `Option`, forçando o tratamento |                                                                |
