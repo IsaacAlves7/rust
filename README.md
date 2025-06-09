@@ -23,15 +23,19 @@ Rust, Go (Golang) e Elixir são linguagens modernas que surgiram para resolver p
 
 Diferenças marcantes entre Go, Rust e Elixir:
 
-| Aspecto                      | Go                                        | Rust                                                            | Elixir                                                         |
-| ---------------------------- | ----------------------------------------- | --------------------------------------------------------------- |--------------------------------------------------------------- |
-| **Gerenciamento de memória** | Coletor de lixo (GC)                      | Ownership e borrowing sem GC                                    | Garbage collector (BEAM VM)                                    |
-| **Concorrência**             | Simples, nativa com goroutines e channels | Mais complexo, mas seguro (async/await, threads, `tokio`)       | Altamente concorrente via Actor Model (processos leves do BEAM)|
-| **Curva de aprendizado**     | Baixa: fácil para iniciantes              | Alta: exige mais entendimento técnico                           | Média: exige entender paradigma funcional e arquitetura OTP    |
-| **Orientação a objetos**     | Estruturas simples com métodos            | Traits e generics poderosos                                     |                                                                |
-| **Erros**                    | Erros são tratados com valores retornados | Sistema de tipos com `Result` e `Option`, forçando o tratamento |                                                                |
-| **Tempo de compilação**      | Rápido                                    | Mais lento                                                      |                                                                |
-| **Comunidade corporativa**   | Google, Uber, Dropbox                     | Mozilla, AWS, Microsoft                                         | WhatsApp, Discord (usando Erlang/Elixir), PagerDuty            |
+| **Aspecto**                  | **Go**                                          | **Rust**                                                           | **Elixir**                                                                   |
+| ---------------------------- | ----------------------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| **Gerenciamento de memória** | Coletor de lixo (GC)                            | Ownership e borrowing sem GC                                       | Garbage collector (BEAM VM)                                                  |
+| **Concorrência**             | Simples, nativa com goroutines e channels       | Complexa mas segura (threads, async/await, `tokio`)                | Altamente concorrente via Actor Model (processos leves do BEAM)              |
+| **Curva de aprendizado**     | Baixa: sintaxe direta e fácil                   | Alta: exige domínio de sistema de tipos e memória                  | Média: exige entender paradigma funcional e arquitetura OTP                  |
+| **Paradigma principal**      | Imperativo e concorrente                        | Sistemas, baixo nível, concorrente e seguro                        | Funcional, concorrente e reativo                                             |
+| **Orientação a objetos**     | Structs com métodos (sem classes)               | Traits e generics poderosos (sem herança clássica)                 | Sem OO tradicional, usa módulos, funções e mensagens                         |
+| **Tratamento de erros**      | Erros como valores retornados (`if err != nil`) | `Result<T, E>` e `Option<T>`, exige tratamento explícito           | `try/rescue`, `with`, *let it crash* (filosofia resiliente)                  |
+| **Tempo de compilação**      | Rápido                                          | Mais lento, mas com verificações rigorosas                         | Não compilado estaticamente (interpretado na BEAM VM)                        |
+| **Desempenho**               | Muito bom, próximo ao C em muitos casos         | Altíssimo, excelente para sistemas críticos e baixo nível          | Bom, mas menos focado em CPU-bound, mais em escalabilidade                   |
+| **Escalabilidade**           | Boa, com goroutines leves                       | Boa, com controle manual de threads ou async                       | Excelente, nativamente distribuído com suporte a sistemas massivos           |
+| **Comunidade corporativa**   | Google, Uber, Dropbox, Cloudflare               | Mozilla, AWS, Microsoft, Discord                                   | Plataformas como WhatsApp, Discord (usando Erlang/Elixir), PagerDuty         |
+| **Melhor para...**           | APIs, CLIs, microserviços, redes                | Sistemas embarcados, web de alta performance, engines, blockchains | Sistemas tolerantes a falha, comunicação em tempo real, back-ends escaláveis |
 
 Quando escolher Go ou Rust ou Elixir? Veja abaixo o ecossistema e casos de uso:
 
