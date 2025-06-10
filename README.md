@@ -95,3 +95,86 @@ fn main() {
 ```
 
 # 🧪 [Rust] DDD, BDD e TDD
+**DDD (Domain-Driven Design)**, **TDD (Test-Driven Development)** e **BDD (Behavior-Driven Development)** **podem ser aplicados em Rust**, embora a forma como você os pratica difere de linguagens orientadas a objetos ou funcionais como Elixir. Vamos ver como cada um se encaixa no ecossistema Rust:
+
+DDD (Domain-Driven Design) em Rust, Embora Rust **não tenha orientação a objetos clássica**, ele **suporta modelagem rica de domínios** com `struct`, `enum`, `trait` e módulos.
+
+Como aplicar DDD em Rust:
+
+* **Entidades** → `struct` com identidade (ID persistente).
+* **Value Objects** → `struct` imutáveis, sem identidade própria.
+* **Serviços de Domínio** → funções puras ou `trait impl` com lógica de negócio.
+* **Repositórios** → traits e structs que isolam a persistência (simulados com banco em memória ou SQLite/Postgres).
+* **Agregados** → structs que agrupam entidades/VOs com regras de consistência.
+* **Módulos** → separação de bounded contexts.
+
+Exemplo simples:
+
+```rust
+pub struct User {
+    pub id: u32,
+    pub name: String,
+}
+
+impl User {
+    pub fn rename(&mut self, new_name: String) {
+        self.name = new_name;
+    }
+}
+
+pub struct RegisterUserService;
+
+impl RegisterUserService {
+    pub fn register(name: &str) -> User {
+        User { id: rand::random(), name: name.to_string() }
+    }
+}
+```
+
+TDD (Test-Driven Development) em Rust, Rust tem suporte nativo a testes via o framework embutido `#[cfg(test)]`.
+
+* Você pode escrever testes antes do código, e o compilador garante a correção e segurança.
+* Os testes são rápidos, seguros (com borrowing/ownership) e evitam falhas em tempo de execução.
+
+Exemplo com TDD:
+
+```rust
+pub fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_add() {
+        assert_eq!(add(2, 3), 5);
+    }
+}
+```
+
+BDD (Behavior-Driven Development) em Rust, o BDD **não é nativo**, mas pode ser implementado com frameworks de terceiros como:
+
+* [`cucumber-rs`](https://crates.io/crates/cucumber) → permite escrever testes Gherkin (`.feature`) como no Cucumber.
+* [`speculate`](https://crates.io/crates/speculate) → sintaxe alternativa ao estilo BDD (mais próxima ao RSpec).
+
+Exemplo com `cucumber-rs`:
+
+```gherkin
+Feature: Login
+  Scenario: Successful login
+    Given a registered user
+    When they provide valid credentials
+    Then they are logged in
+```
+
+Em Rust, você escreve os *steps* em código com `async` e `Result`.
+
+Resumo comparativo no contexto de Rust
+
+| Conceito | Aplicação em Rust                                                                           |
+| -------- | ------------------------------------------------------------------------------------------- |
+| **DDD**  | Possível com `struct`, `trait`, `mod`; foco em modelagem com tipos seguros e explícitos.    |
+| **TDD**  | Suporte nativo (`#[test]`), altamente eficiente com compilação rápida e segura.             |
+| **BDD**  | Usável com frameworks como `cucumber-rs`, mas menos comum na prática em comparação com TDD. |
