@@ -106,6 +106,8 @@ fn main() {
 }
 ```
 
+# ⚙️ [Rust] WebAssembly
+
 # 🧪 [Rust] DDD, BDD e TDD
 **DDD (Domain-Driven Design)**, **TDD (Test-Driven Development)** e **BDD (Behavior-Driven Development)** **podem ser aplicados em Rust**, embora a forma como você os pratica difere de linguagens orientadas a objetos ou funcionais como Elixir. Vamos ver como cada um se encaixa no ecossistema Rust:
 
