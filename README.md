@@ -25,11 +25,11 @@ Foi considerada pelo público a linguagem "mais amada" por nove anos consecutivo
 
 Rust, Go (Golang) e Elixir são linguagens modernas que surgiram para resolver problemas distintos do desenvolvimento de software, mas compartilham algumas ideias em termos de desempenho, concorrência e segurança. Abaixo, segue uma análise comparativa destacando semelhanças e diferenças entre elas:
 
-- **Desempenho alto**: Ambas as linguagens são compiladas para código nativo, o que significa que entregam desempenho comparável ao C/C++. São ótimas escolhas para sistemas de baixa latência, alta performance e que exigem controle de recursos.
+- **Desempenho alto** (Performance): Ambas as linguagens são compiladas para código nativo, o que significa que entregam desempenho comparável ao C/C++. São ótimas escolhas para sistemas de baixa latência, alta performance e que exigem controle de recursos.
 
-- **Segurança na memória**: Tanto Rust quanto Go evitam falhas comuns em C/C++ como segfaults, uso de ponteiros inválidos e data races (corridas de dados), embora o façam de formas diferentes: Go usa coletor de lixo (garbage collector), já Rust usa ownership e borrowing com verificação em tempo de compilação — sem GC.
+- **Segurança na memória** (Memory-Safe): Tanto Rust quanto Go evitam falhas comuns em C/C++ como segfaults, uso de ponteiros inválidos e data races (corridas de dados), embora o façam de formas diferentes: Go usa coletor de lixo (garbage collector), já Rust usa ownership e borrowing com verificação em tempo de compilação — sem GC.
 
-- **Foco em concorrência**: Go é conhecido pelas `goroutines` e `channels`, que facilitam a escrita de código concorrente. Rust tem um sistema de concorrência segura por design, evitando data races com checagens em tempo de compilação. Usa threads, async/await e crates como `tokio`.
+- **Foco em concorrência** (Concurrency): Go é conhecido pelas `goroutines` e `channels`, que facilitam a escrita de código concorrente. Rust tem um sistema de concorrência segura por design, evitando data races com checagens em tempo de compilação. Usa threads, async/await e crates como `tokio`.
 
 - **Simplicidade de uso comparado a C/C++**: Ambas foram projetadas como alternativas modernas às linguagens de baixo nível como C, oferecendo mais segurança, produtividade e melhores ferramentas.
 
