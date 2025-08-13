@@ -112,6 +112,12 @@ fn main() {
 }
 ```
 
+Para rodar o projeto:
+
+```sh
+cargo run
+```
+
 # ⚙️ [Rust] WebAssembly
 <a href="https://webassembly.org/"><img src="https://cdn.worldvectorlogo.com/logos/webassembly-1.svg" height="77" align="right"></a>
 
