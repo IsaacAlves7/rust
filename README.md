@@ -53,7 +53,7 @@ Quando escolher Go ou Rust ou Elixir? Veja abaixo o ecossistema e casos de uso:
 
 | Linguagem  | Casos de Uso Comuns                                             |
 | ---------- | --------------------------------------------------------------- |
-| **Rust**   | Sistemas embarcados, CLI, WebAssembly, engines, bancos de dados |
+| **Rust**   | Sistemas embarcados, OS kernels, CLI, WebAssembly, engines, bancos de dados |
 | **Go**     | Microserviços, APIs, ferramentas de rede, DevOps, cloud         |
 | **Elixir** | Chat, mensageria, telecom, sistemas distribuídos, IoT           |
 
