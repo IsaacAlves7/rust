@@ -96,6 +96,12 @@ cargo init
 ```
 
 ## [Rust] Hello, World!
+Iniciando o diretório: Após a criação do diretório `main`
+
+```sh
+cargo new helloWorld
+```
+
 A função `fn main()` não recebe nenhum valor de entrada, visto que os parênteses estão vazios, ela está retornando um tipo de dado chamado `unity`, que é um tipo vazio.
 
 [![main.rs](https://img.shields.io/badge/-main.rs-E6C3A5?style=social&logo=rust&logoColor=E6C3A5)](#)
