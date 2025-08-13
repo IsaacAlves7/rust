@@ -107,6 +107,33 @@ fn main() {
 ```
 
 # ⚙️ [Rust] WebAssembly
+<a href="https://webassembly.org/"><img src="https://cdn.worldvectorlogo.com/logos/webassembly-1.svg" height="77" align="right"></a>
+
+O **WebAssembly**, abreviado como **Wasm**, é um formato de instrução binária para uma máquina virtual baseada em pilha. O Wasm foi projetado como um destino de compilação portátil para linguagens de programação, permitindo a implantação na Web para aplicativos de cliente e servidor. 
+
+WebAssembly é um formato de código binário portátil cujo objetivo é tornar possíveis aplicações de altíssima performance em páginas Web, ao mesmo tempo em que adiciona pluralidade, pois viabiliza que programadores de diversas linguagens criem ou portabilizem aplicações existentes de plataformas nativas para os navegadores. Tudo isso tendo um modelo de segurança do WASM projetado para ser completamente isolado em "caixa de areia" (sandbox), com permissões restritas e controladas pela pessoa desenvolvedora. Tendo conhecimento aprofundado, é possível utilizar WebAssembly sem depender de linguagem, ferramenta ou recurso específico além dele mesmo para desenvolver aplicações, seja para a Web ou até mesmo no back-end e outros destinos de uso.
+
+> O Wasm é basicamente um bytecode, é um código intermediário resultante da compilação de uma linguagem e que será interpretado por uma máquina virtual (VM) para então ser transformado em linguagem de máquina e logo será interpretado pelo seu computador, contextualizando ele é uma linguagem de baixo-nível, mais próximo da linguagem de máquina. Assim, como a linguagem de montagem ou Assembly.
+
+A intenção do Web Assembly é ser interpretado pela VM para depois poder ser interpretado pelos navegadores permitindo que qualquer linguagem gere esse bytecode possa ser utilizada para o seu desenvolvimento Web.
+
+O objetivo do Web Assembly é de se tornar uma tecnologia universal para desenvolvimento de aplicações Web melhorando consideravelmente a performance e disponibilizando os recursos de aplicações nativa para o desenvolvimento Web, ou seja, isso abre um novo horizonte para toda a internet, onde os desenvolvedores terão um leque de possibilidades na criação de aplicações e os usuários teram a mesma experiência de aplicações nativas no seu computador.
+
+Imagina a hipótese de rodar qualquer tipo de aplicação no seu navegador, aplicativos como: jogos, ferramentas como Adobe Photoshop CC, Autodesk Autocad e até mesmo aplicativos móveis. E isso tudo sem ter que se preocupar com memória interna, pois não precisará instalar nenhuma aplicação. Estamos falando em um mundo compatível com todos os sistemas operacionais e dispositivos, tudo dentro do navegador. 
+
+Atualmente, as linguagens de programação que suportam/compilam o módulo Web Assembly são: 
+
+- C/C++, Rust (muito popular),
+- AssemblyScript (uma sintaxe TypeScript),
+- C#, F#, Go, Kotlin, Swift, D, Pascal, Zig, Grain, Python (experimental).
+
+Essas linguagens são as que suportam e possuem uma estrutura/arquitetura ideal para desenvolvimento em baixo-nível e com elas você terá um maior controle da sua aplicação podendo arquitetar do jeito que você achar necessário em pontos cruciais, como por exemplo: O gerenciamento de memória é um dos principais pontos fracos de linguagens dinâmicas como JavaScript. Ou seja, podemos usar o WebAssembly compilado pelo código JavaScript, como uma aplicação CLI e pelo Node.js (com acesso aos recursos do sistema).
+
+A máquina de pilha Wasm foi projetada para ser codificada em um formato binário com eficiência de tamanho e tempo de carregamento. O WebAssembly visa executar em velocidade nativa, aproveitando os recursos de hardware comuns disponíveis em uma ampla variedade de plataformas.
+
+O WebAssembly descreve um ambiente de execução em área restrita com proteção de memória que pode até ser implementado dentro de máquinas virtuais JavaScript existentes. Quando incorporado na Web, o WebAssembly aplicará as políticas de segurança de mesma origem e permissões do navegador.
+
+O WebAssembly foi projetado para ser impresso em um formato textual para depuração, teste, experimentação, otimização, aprendizado, ensino e escrita de programas à mão. O formato textual será usado ao visualizar a fonte dos módulos Wasm na web. E, também, para manter a natureza sem versão, com recursos testados e compatível com versões anteriores da web. Os módulos WebAssembly poderão entrar e sair do contexto JavaScript e acessar a funcionalidade do navegador por meio das mesmas APIs da Web acessíveis a partir do JavaScript. O WebAssembly também oferece suporte a incorporações não-web.
 
 # 🧪 [Rust] DDD, BDD e TDD
 **DDD (Domain-Driven Design)**, **TDD (Test-Driven Development)** e **BDD (Behavior-Driven Development)** **podem ser aplicados em Rust**, embora a forma como você os pratica difere de linguagens orientadas a objetos ou funcionais como Elixir. Vamos ver como cada um se encaixa no ecossistema Rust:
