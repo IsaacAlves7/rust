@@ -124,6 +124,19 @@ Para checar a compilação:
 cargo check
 ```
 
+## [Rust] Comentários
+
+```rust
+fn main() {
+    // Comentário de uma linha
+    /*
+    Comentário
+    Com mais de
+    uma linha
+    */
+}
+```
+
 # ⚙️ [Rust] Variáveis e tipos de dados
 
 ```rust
