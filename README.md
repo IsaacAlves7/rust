@@ -95,7 +95,7 @@ Iniciando o diretório: Após a criação do diretório `main`
 cargo init
 ```
 
-Para rodar o Rust no console do terminal:
+Para rodar o Rust no console do terminal: Esse comando usa o compilador do Rust (`rustc`) para transformar seu arquivo-fonte (`exemplo.rs`) em um binário executável.
 
 ```sh
 rustc exemplo.rs
