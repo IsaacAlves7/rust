@@ -126,6 +126,12 @@ cargo check
 
 # ⚙️ [Rust] Variáveis e tipos de dados
 
+```rust
+fn main() {
+   let x = 5;
+   println!(x+5);
+}
+```
 
 # ⚙️ [Rust] Estruturas de programação
 
