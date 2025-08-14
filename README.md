@@ -95,6 +95,12 @@ Iniciando o diretório: Após a criação do diretório `main`
 cargo init
 ```
 
+Para rodar o Rust no console do terminal:
+
+```sh
+rustc exemplo.rs
+```
+
 ## [Rust] Hello, World!
 Iniciando o diretório: Após a criação do arquivo `main`, pode notar a semelhança da estrutura do diretório com as de outras linguagens de programação modernas como JavaScript iniciado através do Node.js.
 
