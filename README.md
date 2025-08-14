@@ -123,9 +123,15 @@ Para checar a compilação:
 ```sh
 cargo check
 ```
+
 # ⚙️ [Rust] Variáveis e tipos de dados
 
+
 # ⚙️ [Rust] Estruturas de programação
+
+## [Rust] Estruturas condicionais
+
+## [Rust] Laços de Repetição (Loops)
 
 # ⚙️ [Rust] FP - Paradigma Funcional
 
