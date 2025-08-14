@@ -96,7 +96,7 @@ cargo init
 ```
 
 ## [Rust] Hello, World!
-Iniciando o diretório: Após a criação do diretório `main`
+Iniciando o diretório: Após a criação do arquivo `main`, pode notar a semelhança da estrutura do diretório com as de outras linguagens de programação modernas como JavaScript iniciado através do Node.js.
 
 ```sh
 cargo new helloWorld
