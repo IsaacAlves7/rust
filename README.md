@@ -154,7 +154,26 @@ fn main() {
 
 # ⚙️ [Rust] Módulos
 
+```rust
+use std::thread;
+use std::time::Duration;
+
+fn main() {
+    let mut controle = 0;
+    let mut numero = true;
+
+    while numero {
+        println!("O número da vez é: {}", controle);
+        controle += 1;
+        numero = true;
+        thread::sleep(Duration::from_secs(1));
+    }
+}
+```
+
 # ⚙️ [Rust] Arrays
+
+## [Rust] Matrizes
 
 # ⚙️ [Rust] Estruturas de programação
 
