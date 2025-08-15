@@ -152,6 +152,10 @@ fn main() {
 }
 ```
 
+# ⚙️ [Rust] Módulos
+
+# ⚙️ [Rust] Arrays
+
 # ⚙️ [Rust] Estruturas de programação
 
 ## [Rust] Estruturas condicionais
@@ -159,6 +163,36 @@ fn main() {
 ## [Rust] Laços de Repetição (Loops)
 
 # ⚙️ [Rust] FP - Paradigma Funcional
+
+```rust
+use std::io;
+
+fn x_input(texto: &str) -> String {
+    println!("{}", texto);
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).expect("Falha ao ler a linha");
+    input.trim().to_string()
+}
+
+fn x_int(inteiro: &str) -> i32 {
+    inteiro.parse::<i32>().expect("Falha ao converter para inteiro")
+}
+
+// Funções
+
+fn soma(n1: i32, n2: i32) -> i32 {
+    n1 + n2
+}
+
+fn main() {
+    let n1 = x_int(&x_input("Digite o primeiro número: "));
+    let n2 = x_int(&x_input("Digite o segundo número: "));
+
+    let resultado = soma(n1, n2);
+
+    println!("O resultado da soma: {}", resultado);
+}
+```
 
 # ⚙️ [Rust] OOP - Paradigma Orientado a Objetos
 
