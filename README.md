@@ -179,6 +179,35 @@ fn main() {
 
 ## [Rust] Estruturas condicionais
 
+```rust
+use std::io;
+
+fn x_input(texto: &str) -> String {
+    println!("{}", texto);
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).expect("Falha ao ler a linha");
+    input.trim().to_string()
+}
+
+fn x_int(inteiro: &str) -> i32 {
+    inteiro.parse::<i32>().expect("Falha ao converter para inteiro")
+}
+
+fn main() {
+    let idade = x_int(&x_input("Qual sua idade: "));
+
+    let acompanhado = true;
+
+    if idade >= 18 {
+        println!("Pode entrar e divirta-se!!!");
+    } else if idade >= 16 && acompanhado {
+        println!("Entre com o seu responsável!!!");
+    } else {
+        println!("Vai pra casa dormir criança!!!");
+    }
+}
+```
+
 ## [Rust] Laços de Repetição (Loops)
 
 # ⚙️ [Rust] FP - Paradigma Funcional
