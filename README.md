@@ -144,6 +144,34 @@ fn main() {
 ```
 
 # ⚙️ [Rust] Variáveis e tipos de dados
+No Rust, o uso de `"{}"` é peculiar porque ele faz parte do sistema de formatação de strings baseado em macros (`println!`, `format!`, `write!` etc.), e não de simples concatenação de strings como em algumas outras linguagens. A questão é, por que Rust usa `{}`? 
+
+1. Pela segurança em tempo de compilação. Em Rust, quando você escreve:
+
+```rust
+println!("Olá, {}!", nome);
+```
+
+O compilador verifica se o número e tipo dos valores passados correspondem aos placeholders (`{}`). Se faltar argumento ou o tipo não implementar `Display` ou `Debug`, o código nem compila.
+
+2. Baseado no **trait system**, que é um dos pilares da linguagem, é o mecanismo que permite definir comportamentos compartilhados e aplicá-los a diferentes tipos, funcionando de forma parecida com interfaces em outras linguagens, mas com mais poder e segurança.
+   * `{}` é ligado ao **trait** `std::fmt::Display` → define como um tipo é convertido para string de forma "amigável".
+   * `{:?}` usa `std::fmt::Debug` → formato para depuração (mais verboso, útil para debug structs).
+   * Isso significa que a formatação é extensível — você pode criar seu próprio tipo e implementar `Display` para decidir como ele aparece com `{}`.
+
+4. Separação de responsabilidade, diferente do `+` para concatenar strings, `{}` mantém o template de texto separado dos dados, tornando o código mais limpo e menos sujeito a erros de concatenação ou conversão de tipo manual.
+
+5. Flexibilidade de formatação: Dentro das chaves, dá para colocar modificadores:
+
+```rust
+println!("{:>8}", 42);   // alinhado à direita em 8 colunas
+println!("{:08}", 42);   // zero padding: 00000042
+println!("{:.2}", 3.1416); // 3.14
+```
+     
+O `"{}"` do Rust é uma instrução ao compilador para pegar um valor que implementa `Display` e gerar sua representação textual, validando os argumentos em tempo de compilação — algo que evita erros que, em outras linguagens, só apareceriam em runtime.
+
+Exemplo:
 
 ```rust
 fn main() {
