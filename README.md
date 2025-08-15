@@ -152,6 +152,92 @@ fn main() {
 }
 ```
 
+Variáveis input:
+
+```rust
+use std::io;
+
+// Funções
+fn x_input(texto: &str) -> String {
+    println!("{}", texto);
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).expect("Falha ao ler a entrada");
+    input.trim().to_string()
+}
+
+fn x_int(inteiro: &str) -> i32 {
+    inteiro.trim().parse().expect("Falha ao converter para inteiro")
+}
+
+fn x_float(decimal: &str) -> f64 {
+    decimal.trim().parse().expect("Falha ao converter para decimal")
+}
+
+fn main() {
+    // Qual é o seu nome?
+    let name = x_input("Qual é seu nome?");
+
+    // Saída
+    println!("Olá, {}!", name);
+
+    // Digite um número inteiro
+    let num_str = x_input("Digite um número inteiro:");
+    let num: i32 = x_int(&num_str);
+    let add = num + 1;
+
+    // Saída
+    println!("{} + 1 = {}", num, add);
+
+    // Digite um número decimal
+    let num_str = x_input("Digite um número decimal:");
+    let num: f64 = x_float(&num_str);
+    let div = num / 2.0;
+
+    // Saída
+    println!("{} / 2 = {}", num, div);
+}use std::io;
+
+// Funções
+fn x_input(texto: &str) -> String {
+    println!("{}", texto);
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).expect("Falha ao ler a entrada");
+    input.trim().to_string()
+}
+
+fn x_int(inteiro: &str) -> i32 {
+    inteiro.trim().parse().expect("Falha ao converter para inteiro")
+}
+
+fn x_float(decimal: &str) -> f64 {
+    decimal.trim().parse().expect("Falha ao converter para decimal")
+}
+
+fn main() {
+    // Qual é o seu nome?
+    let name = x_input("Qual é seu nome?");
+
+    // Saída
+    println!("Olá, {}!", name);
+
+    // Digite um número inteiro
+    let num_str = x_input("Digite um número inteiro:");
+    let num: i32 = x_int(&num_str);
+    let add = num + 1;
+
+    // Saída
+    println!("{} + 1 = {}", num, add);
+
+    // Digite um número decimal
+    let num_str = x_input("Digite um número decimal:");
+    let num: f64 = x_float(&num_str);
+    let div = num / 2.0;
+
+    // Saída
+    println!("{} / 2 = {}", num, div);
+}
+```
+
 # ⚙️ [Rust] Módulos
 
 ```rust
