@@ -1,5 +1,9 @@
 <a href="https://github.com/IsaacAlves7/rust"><img src="https://github.com/user-attachments/assets/33490bda-7577-41e1-9711-8df466750fa8"></a>
 
+Além disso, é necessário que todo projeto tenha todos os ambientes padrões do CI/CD - Continuous Integration & Continuous Delivery, para que a aplicação seja aprovada e disponibilizada para os usuários.
+
+> Versículo chave: "Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos." - Provérbios 16:3
+> 
 > ⚙️🦀 **Preparação**: Para este conteúdo, o aluno deverá dispor de um computador com acesso à internet, um web browser com suporte a HTML 5 (Google Chrome, Mozilla Firefox, Microsoft Edge, Safari, Opera etc.), um editor de texto ou IDE (VSCode etc.) e o software Rust, com a versão mais recente, instalado na sua máquina local.
 
 Sou um especialista em desenvolvimento de software com foco no ecossistema Rust, utilizando a linguagem para construir sistemas altamente seguros, performáticos e confiáveis. Tenho experiência sólida em boas práticas como SOLID, DRY, KISS, TDA e SoC, aplicação de design patterns (criacionais, estruturais e comportamentais), além da adoção de princípios de Clean Code e Clean Architecture para garantir legibilidade, manutenibilidade e escalabilidade do código.
