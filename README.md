@@ -393,7 +393,17 @@ O WebAssembly descreve um ambiente de execução em área restrita com proteçã
 
 O WebAssembly foi projetado para ser impresso em um formato textual para depuração, teste, experimentação, otimização, aprendizado, ensino e escrita de programas à mão. O formato textual será usado ao visualizar a fonte dos módulos Wasm na web. E, também, para manter a natureza sem versão, com recursos testados e compatível com versões anteriores da web. Os módulos WebAssembly poderão entrar e sair do contexto JavaScript e acessar a funcionalidade do navegador por meio das mesmas APIs da Web acessíveis a partir do JavaScript. O WebAssembly também oferece suporte a incorporações não-web.
 
+O que é montagem de teia (WASM)? Por que atrai tanta atenção? O diagrama mostra como podemos executar código C/C++/Rust nativo dentro de um navegador da Web com WASM.
+
 <img width="1456" height="1362" alt="image" src="https://github.com/user-attachments/assets/62ded1b2-462a-49eb-a583-c80ea2360fb7" />
+
+Tradicionalmente, só podemos trabalhar com Javascript no navegador da web, e o desempenho não pode ser comparado com código nativo como C/C++ porque é interpretado.
+
+No entanto, com o WASM, podemos reutilizar bibliotecas de código nativas existentes desenvolvidas em C/C++/Rust, etc. para serem executadas no navegador da web. Esses aplicativos da Web têm desempenho quase nativo.
+
+Por exemplo, podemos executar a biblioteca de codificação/decodificação de vídeo (escrita em C++) no navegador da web.
+
+Isso abre muitas possibilidades para computação em nuvem e computação de borda. Podemos executar aplicativos sem servidor com menos recursos e tempo de inicialização instantâneo.
 
 # 🧪 [Rust] DDD, BDD e TDD
 **DDD (Domain-Driven Design)**, **TDD (Test-Driven Development)** e **BDD (Behavior-Driven Development)** **podem ser aplicados em Rust**, embora a forma como você os pratica difere de linguagens orientadas a objetos ou funcionais como Elixir. Vamos ver como cada um se encaixa no ecossistema Rust:
