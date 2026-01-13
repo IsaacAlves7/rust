@@ -432,6 +432,25 @@ Por exemplo, podemos executar a biblioteca de codificação/decodificação de v
 
 Isso abre muitas possibilidades para computação em nuvem e computação de borda. Podemos executar aplicativos sem servidor com menos recursos e tempo de inicialização instantâneo.
 
+# ⚙️ Zig
+**Zig** é uma linguagem de programação de baixo nível, moderna e deliberadamente minimalista, criada para ocupar o espaço entre C e linguagens de sistemas mais “opiniosas”, como Rust, mas sem tentar substituir completamente nenhuma delas. Ela foi projetada com um foco muito claro em previsibilidade, controle explícito e simplicidade sem magia, partindo da ideia de que o programador deve entender exatamente o que o código faz, quando faz e quanto custa em termos de recursos.
+
+A filosofia central do Zig é que não deve existir comportamento implícito escondido do desenvolvedor. Diferente de muitas linguagens modernas, Zig não tem garbage collector, não tem exceções no sentido tradicional, não tem runtime pesado e não depende de um sistema operacional específico para funcionar. O gerenciamento de memória é explícito e sempre visível no código, mas feito de forma estruturada, através de allocators passados como dependência, o que permite escrever código altamente previsível e testável, algo muito valorizado em sistemas críticos, embarcados e de alta performance.
+
+Um dos pontos mais marcantes do Zig é o tratamento de erros. Em vez de exceções ou códigos de erro soltos, Zig usa valores de erro como parte do sistema de tipos. Uma função pode retornar um valor ou um erro, e o compilador força o programador a lidar com isso explicitamente. Isso evita uma enorme classe de bugs silenciosos e torna o fluxo de erro claro no próprio código, sem necessidade de pilhas de exceção ou mecanismos ocultos. O erro deixa de ser algo “especial” e passa a ser parte do contrato da função.
+
+Zig também se destaca pelo conceito de compile-time extremamente poderoso. O código Zig pode ser executado em tempo de compilação, permitindo gerar código, validar invariantes, configurar estruturas e adaptar comportamentos sem recorrer a macros complexas ou ferramentas externas. Isso faz com que Zig seja incrivelmente expressiva sem perder legibilidade. O compilador se torna quase um interpretador controlado pelo programador, mas de forma explícita e segura.
+
+Outro aspecto fundamental é a relação do Zig com C. Zig não tenta “esconder” C nem substituí-lo agressivamente. Pelo contrário, ele foi projetado para interoperar com C de forma quase perfeita. Você pode importar headers C diretamente, chamar funções C sem wrappers artificiais e até usar Zig como um compilador C alternativo, aproveitando o sistema de build e o cross-compilation extremamente robusto da linguagem. Isso faz do Zig uma ferramenta muito atraente para modernizar bases de código existentes ou escrever bibliotecas que precisam conversar com o ecossistema C sem fricção.
+
+Falando em build system, Zig integra o sistema de build à própria linguagem, eliminando a dependência de ferramentas externas complexas como Make, CMake ou autotools. O build é descrito em Zig, com lógica real, tipos e validações, o que torna builds mais previsíveis, portáveis e fáceis de manter. Além disso, o suporte a cross-compilation é um dos pontos mais fortes da linguagem: é possível compilar para múltiplas arquiteturas e sistemas operacionais a partir de uma única máquina, sem cadeias de ferramentas externas, algo que costuma ser doloroso em C e C++.
+
+Em termos de segurança, Zig não tenta ser “memory safe por padrão” como Rust, mas fornece ferramentas explícitas para escrever código seguro quando o desenvolvedor assim deseja. Ele permite tanto código extremamente próximo do metal quanto abstrações seguras, desde que essas abstrações não escondam custo nem comportamento. Isso faz com que Zig seja frequentemente descrita como uma linguagem “honesta”: ela não promete te salvar de todos os erros, mas também não te engana.
+
+No cenário real, Zig vem sendo adotada para desenvolvimento de sistemas embarcados, motores de jogos, ferramentas de sistema, compiladores, runtimes, bibliotecas de alto desempenho e infraestrutura de baixo nível. Ela ainda não tem o mesmo ecossistema de linguagens mais antigas ou mainstream, mas cresce de forma consistente justamente porque resolve problemas reais sem adicionar complexidade artificial.
+
+Em essência, Zig é uma linguagem para quem quer controle, clareza e previsibilidade, sem abrir mão de expressividade moderna. Ela não tenta ser tudo para todos, mas é extremamente eficaz naquilo a que se propõe: permitir que o programador escreva software de baixo nível com menos dor, menos mágica e mais entendimento real do que está acontecendo.
+
 # 🧪 [Rust] DDD, BDD e TDD
 **DDD (Domain-Driven Design)**, **TDD (Test-Driven Development)** e **BDD (Behavior-Driven Development)** **podem ser aplicados em Rust**, embora a forma como você os pratica difere de linguagens orientadas a objetos ou funcionais como Elixir. Vamos ver como cada um se encaixa no ecossistema Rust:
 
