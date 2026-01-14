@@ -1,8 +1,6 @@
 <a href="https://github.com/IsaacAlves7/rust"><img src="https://github.com/user-attachments/assets/33490bda-7577-41e1-9711-8df466750fa8"></a>
 
 > Versículo chave: "Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos." - Provérbios 16:3
-> 
-> ⚙️🦀 **Preparação**: Para este conteúdo, o aluno deverá dispor de um computador com acesso à internet, um web browser com suporte a HTML 5 (Google Chrome, Mozilla Firefox, Microsoft Edge, Safari, Opera etc.), um editor de texto ou IDE (VSCode etc.) e o software Rust, com a versão mais recente, instalado na sua máquina local.
 
 https://jsoverson.medium.com/was-rust-worth-it-f43d171fb1b3
 
@@ -19,6 +17,8 @@ Em observabilidade, utilizo OpenTelemetry, Prometheus e Grafana para monitoramen
 Também implemento ferramentas de analytics como Google Analytics 4 ou soluções personalizadas para análise de uso em produção. Tenho experiência com entrega de software em ambientes PaaS, uso de recursos em nuvem (AWS, GCP, Azure) e infraestrutura como código com Docker e Kubernetes.
 
 # It's a repository of Rust programming ⚙️🦀
+> ⚙️🦀 **Preparação**: Para este conteúdo, o aluno deverá dispor de um computador com acesso à internet, um web browser com suporte a HTML 5 (Google Chrome, Mozilla Firefox, Microsoft Edge, Safari, Opera etc.), um editor de texto ou IDE (VSCode etc.) e o software Rust, com a versão mais recente, instalado na sua máquina local.
+
 <a href="https://www.rust-lang.org/"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Rust_programming_language_black_logo.svg" align="right" height="77"></a>
 
 O **Rust** é uma linguagem de programação compilada, multiparadigma, desenvolvida inicialmente pela Mozilla Research. Ela combina o desempenho de linguagens como C/C++ com garantias de segurança de memória sem precisar de garbage collector. É projetada para ser "segura, concorrente e prática", mas diferente de outras linguagens seguras, Rust não usa coletor de lixo e possui suporte nativo ao <a href="">WebAssembly</a>.
