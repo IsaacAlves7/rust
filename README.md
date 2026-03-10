@@ -330,6 +330,8 @@ fn main() {
 
 # ⚙️ [Rust] FP - Paradigma Funcional
 
+<img height="77" align="right" src="https://github.com/user-attachments/assets/fd0d00da-5f74-4701-ab9b-59403866138d" />
+
 ```rust
 use std::io;
 
