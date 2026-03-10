@@ -37,6 +37,8 @@ Rust, Go (Golang) e Elixir são linguagens modernas que surgiram para resolver p
 
 - **Simplicidade de uso comparado a C/C++**: Ambas foram projetadas como alternativas modernas às linguagens de baixo nível como C, oferecendo mais segurança, produtividade e melhores ferramentas.
 
+![c75872149c8ea0036f0e03f0ddee7f5a2c9fedf0](https://github.com/user-attachments/assets/ac8f3300-3def-4829-a981-352ecb50d79b)
+
 Diferenças marcantes entre Go, Rust e Elixir:
 
 | **Aspecto**                  | **Go**                                          | **Rust**                                                           | **Elixir**                                                                   |
