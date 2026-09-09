@@ -379,8 +379,286 @@ fn main() {
 ```
 
 # ⚙️ [Rust] OOP - Paradigma Orientado a Objetos
+Rust é frequentemente descrito como uma linguagem **multiparadigma**, mas ela deliberadamente **não é OOP no sentido clássico** (como Java ou C#). Não existem classes, não existe herança de implementação, e isso é uma decisão de design, não uma limitação.
+
+O que Rust NÃO tem
+
+- **Classes** → em vez disso: `struct` (dados) + `impl` (comportamento) separados
+- **Herança** → em vez disso: composição + traits
+- **Polimorfismo por herança** → em vez disso: traits + generics ou trait objects
+
+1. Encapsulamento: `struct` + `impl`
+
+```rust
+struct Usuario {
+    nome: String,
+    idade: u32,
+}
+
+impl Usuario {
+    // "construtor" (convenção, não é especial na linguagem)
+    fn novo(nome: &str, idade: u32) -> Self {
+        Usuario { nome: nome.to_string(), idade }
+    }
+
+    // método (recebe &self)
+    fn saudacao(&self) -> String {
+        format!("Olá, {}", self.nome)
+    }
+
+    // método mutável
+    fn fazer_aniversario(&mut self) {
+        self.idade += 1;
+    }
+}
+```
+
+Encapsulamento é por **módulo**, não por classe: `pub` controla visibilidade no nível de módulo/crate, não existe `private`/`protected` por struct.
+
+```rust
+mod usuario {
+    pub struct Usuario {
+        pub nome: String,
+        idade: u32, // privado — só acessível dentro do módulo
+    }
+}
+```
+
+2. Sem herança → Composição
+
+Em vez de `class Gerente extends Funcionario`, você compõe:
+
+```rust
+struct Funcionario {
+    nome: String,
+    salario: f64,
+}
+
+struct Gerente {
+    funcionario: Funcionario, // composição, não herança
+    equipe: Vec<String>,
+}
+
+impl Gerente {
+    fn nome(&self) -> &str {
+        &self.funcionario.nome // delegação explícita
+    }
+}
+```
+
+Não há açúcar sintático automático para "herdar" métodos — você delega manualmente ou usa traits (abaixo). Isso é intencional: evita os problemas clássicos de hierarquias profundas de herança (fragilidade, diamond problem, etc).
+
+3. Polimorfismo: Traits (equivalente a interfaces)
+
+Traits são o mecanismo central de polimorfismo — similar a interfaces em Go/Java, mas mais poderosos (podem ter implementações default, tipos associados, etc):
+
+```rust
+trait Forma {
+    fn area(&self) -> f64;
+
+    // método default — como default methods em interfaces Java
+    fn descricao(&self) -> String {
+        format!("Área: {:.2}", self.area())
+    }
+}
+
+struct Circulo { raio: f64 }
+struct Retangulo { largura: f64, altura: f64 }
+
+impl Forma for Circulo {
+    fn area(&self) -> f64 {
+        std::f64::consts::PI * self.raio * self.raio
+    }
+}
+
+impl Forma for Retangulo {
+    fn area(&self) -> f64 {
+        self.largura * self.altura
+    }
+}
+```
+
+Polimorfismo estático (generics) — zero-cost, resolvido em compile-time
+
+```rust
+fn imprimir_area<T: Forma>(forma: &T) {
+    println!("{}", forma.descricao());
+}
+```
+
+Polimorfismo dinâmico (`dyn Trait`) — como interface em Go/Java, com vtable em runtime
+
+```rust
+fn imprimir_area_dyn(forma: &dyn Forma) {
+    println!("{}", forma.descricao());
+}
+
+let formas: Vec<Box<dyn Forma>> = vec![
+    Box::new(Circulo { raio: 2.0 }),
+    Box::new(Retangulo { largura: 3.0, altura: 4.0 }),
+];
+
+for f in &formas {
+    println!("{}", f.descricao());
+}
+```
+
+4. Comparando com o que você já usa
+
+| Conceito OOP | Java/Spring | Go | Rust |
+|---|---|---|---|
+| Dados + comportamento | `class` | `struct` + funções | `struct` + `impl` |
+| Interface | `interface` | `interface` (implícita) | `trait` |
+| Herança de implementação | `extends` | ❌ não existe | ❌ não existe |
+| Polimorfismo runtime | virtual dispatch | interface satisfeita implicitamente | `dyn Trait` (vtable) |
+| Polimorfismo compile-time | ❌ (type erasure em generics) | ❌ (até genéricos chegarem, e mesmo assim limitado) | generics com monomorfização |
+| Encapsulamento | `private`/`protected`/`public` na classe | maiúscula/minúscula no pacote | `pub` no módulo |
+
+Se você vem de Spring Boot, o paralelo mental mais próximo é: **trait ≈ interface Java**, mas sem a possibilidade de "extends" — tudo é composição + implementação de traits.
+
+5. Padrões que substituem heranças comuns em Java
+
+- **Strategy pattern** → generics ou `dyn Trait` diretamente, sem precisar do boilerplate de interface + classes concretas
+- **Template method** → métodos default em traits
+- **Builder pattern** → muito comum em Rust justamente por não haver construtores com múltiplos overloads
+
+```rust
+// Builder — comum no lugar de construtores telescópicos
+struct RequisicaoBuilder {
+    url: String,
+    timeout: Option<u32>,
+}
+
+impl RequisicaoBuilder {
+    fn novo(url: &str) -> Self {
+        Self { url: url.to_string(), timeout: None }
+    }
+
+    fn timeout(mut self, segundos: u32) -> Self {
+        self.timeout = Some(segundos);
+        self
+    }
+}
+```
 
 # ⚙️ [Rust] Programação assíncrona
+Rust trata assincronismo de forma diferente de Go (goroutines) ou até de Python/JS (event loop embutido): a linguagem fornece a **sintaxe** (`async`/`await`), mas não inclui um runtime — você escolhe um externo.
+
+1. `async`/`await` básico
+
+```rust
+async fn buscar_dados() -> String {
+    // código assíncrono
+    "dados".to_string()
+}
+
+async fn processar() {
+    let resultado = buscar_dados().await;
+    println!("{}", resultado);
+}
+```
+
+Uma função `async fn` não executa nada sozinha — ela retorna um **`Future`**, que é "preguiçoso" (lazy). Nada acontece até que algo o execute (`.await` ou um runtime).
+
+2. Runtimes: Tokio é o padrão de fato
+
+Sem runtime, `Future`s não rodam. O mais usado de longe é o **Tokio**:
+
+```toml
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+```
+
+```rust
+#[tokio::main]
+async fn main() {
+    let resultado = buscar_dados().await;
+    println!("{}", resultado);
+}
+```
+
+O macro `#[tokio::main]` é açúcar sintático que transforma `main` numa função síncrona que cria o runtime e roda o `Future` até completar.
+
+Alternativas: **async-std** (API parecida com a std), **smol** (minimalista). Tokio domina o ecossistema (web frameworks, bancos, etc quase todos assumem Tokio).
+
+3. Concorrência: rodando tarefas em paralelo
+
+`tokio::spawn` — tarefas independentes (parecido com goroutine)
+
+```rust
+#[tokio::main]
+async fn main() {
+    let handle = tokio::spawn(async {
+        // roda concorrentemente
+        buscar_dados().await
+    });
+
+    let resultado = handle.await.unwrap();
+    println!("{}", resultado);
+}
+```
+
+`join!` — esperar várias futures ao mesmo tempo
+
+```rust
+use tokio::join;
+
+async fn main() {
+    let (a, b) = join!(buscar_dados(), buscar_outros_dados());
+}
+```
+
+`select!` — corrida entre futures, pega a primeira que terminar
+
+```rust
+use tokio::select;
+
+async fn exemplo() {
+    select! {
+        resultado = buscar_dados() => println!("dados: {}", resultado),
+        _ = tokio::time::sleep(std::time::Duration::from_secs(5)) => {
+            println!("timeout!");
+        }
+    }
+}
+```
+
+4. Diferença conceitual: Rust vs Go
+
+Como você trabalha com Go, vale destacar o contraste:
+
+| | Go | Rust |
+|---|---|---|
+| Modelo | Goroutines + canais, agendadas pelo runtime Go embutido | `Future`s baseados em polling, precisam de executor externo (Tokio) |
+| Custo | Leve, mas com stack própria por goroutine | Zero-cost abstraction — vira uma máquina de estados em tempo de compilação |
+| Cancelamento | Cooperativo via `context.Context` | `Future` dropado = cancelado automaticamente |
+| Erro comum | Vazamento de goroutine | "Future não é `Send`", problemas de lifetime em código async |
+
+Um `Future` em Rust é essencially um enum/state machine gerado pelo compilador — não há overhead de heap allocation a menos que você use `Box::pin` explicitamente (ex: para recursão em funções async).
+
+5. Traits assíncronos em structs
+
+Isso costumava ser dor de cabeça (precisava do crate `async-trait`), mas desde Rust 1.75 há suporte nativo a `async fn` em traits (com limitações — não é dyn-compatible por padrão):
+
+```rust
+trait Buscador {
+    async fn buscar(&self, id: u32) -> Option<String>;
+}
+```
+
+6. Erros em código async
+
+Combina normalmente com `Result` e `?`:
+
+```rust
+async fn buscar_e_processar() -> anyhow::Result<String> {
+    let dados = reqwest::get("https://api.exemplo.com")
+        .await?
+        .text()
+        .await?;
+    Ok(dados)
+}
+```
 
 # ⚙️ [Rust] Tratamento de exceções
 Tratamento de Erros em Rust não tem exceções no sentido tradicional (como `try/catch` em Java, Python, etc). Em vez disso, usa um sistema baseado em **tipos de retorno** para tratar erros, dividido em duas categorias principais:
