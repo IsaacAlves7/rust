@@ -55,6 +55,36 @@ Diferenças marcantes entre Go, Rust e Elixir:
 | **Comunidade corporativa**   | Google, Uber, Dropbox, Cloudflare               | Mozilla, AWS, Microsoft, Discord                                   | Plataformas como WhatsApp, Discord (usando Erlang/Elixir), PagerDuty         |
 | **Melhor para...**           | APIs, CLIs, microserviços, redes                | Sistemas embarcados, web de alta performance, engines, blockchains | Sistemas tolerantes a falha, comunicação em tempo real, back-ends escaláveis |
 
+**Rust VS Go**: Quando faz sentido a comparação? Existe uma lang que tendencialmente é superior a outra? Rust superior? Ou Go superior? O que vem dominando o mercado? Nichos distintos ou competidores de um mesmo mercado?
+
+São nichos completamente distintos sim. Rust é um replace hoje para C/C++.
+
+O Go originalmente nasceu tendendo a resolver problemas que você teria ao programar em C. Mas acabou tomando outro rumo e hoje seria um competidor mais para runtimes e langs como JVM com Java, Python, Elixir etc.
+
+Rust é muito focado em high performance com a ideia de no runtime e no garbage collector. Rust possui suporte a Functional Programming built-in, features nativas como ser memory safety e thread-safety. O foco é eliminar potenciais problemas que você só pegaria em runtime. Uma série de bugs são eliminados em tempo de compilação por conta da construção de como a linguagem foi designada.
+
+E Go? A ideia é ser ultra simples com apenas 25 palavras reservadas.
+
+Visa ter features nativas para um controle fino de concorrência e paralelismo com green threads usando goroutines. O modelo hoje de Go pensando especificamente numa abstração de concorrência mais high level estaria acima de Rust.
+
+Rust nasceu também com green threads mas também foi para outro rumo e optou por retirar esse suporte com a estratégia de simplificação de runtime.
+
+Você pode checar diretamente no RFC a motivação da remoção de green threads no Rust. É bem interessante e mostra que a decisão é assentada em vários pilares, além da simplificação do runtime.
+
+**05**
+E sobre mercado? Especialmente no Brasil não tem a menor comparação.
+
+Go está bem à frente e crescendo. Então, se quer focar em uma delas: vai de Go que você vai estar mais coberto. Afinal, seu dia-a-dia vai ser mais voltado a web-apis e coisas do gênero.
+
+**06**
+E sobre performance?
+
+Óbvio que isso depende de muitas variáveis. E precisaríamos ser bem específicos aqui.
+
+Mas no geral, Rust vai estar sim à frente. Foi construído com premissas mais sólidas e já está sendo incorporado inclusive no kernel do Linux a partir da versão 5.13.
+
+A ideia é ter nível comparável ao C em termos de performance com o plus de ter features de ter memory safety, entre outras como já falamos.
+
 Quando escolher Go ou Rust ou Elixir? Veja abaixo o ecossistema e casos de uso:
 
 | Linguagem  | Casos de Uso Comuns                                             |
@@ -562,7 +592,31 @@ Uma função `async fn` não executa nada sozinha — ela retorna um **`Future`*
 
 2. Runtimes: Tokio é o padrão de fato
 
-Sem runtime, `Future`s não rodam. O mais usado de longe é o **Tokio**:
+Sem runtime, `Future`s não rodam. O mais usado de longe é o **Tokio**: **Tokio** é muito mais do que uma simples biblioteca na ecologia da linguagem Rust, ela é o alicerce sobre o qual a programação assíncrona prática e de alto desempenho é construída no mundo Rust. Em sua essência, o Tokio é um **runtime assíncrono** que fornece os blocos fundamentais necessários para escrever aplicações de rede que são simultaneamente confiáveis e extremamente eficientes em termos de recursos.
+
+A revolução que o Tokio traz está em como ele permite que o Rust, uma linguagem de programação de sistemas inerentemente sínnca e sem um runtime de coleta de lixo, execute operações de E/S que são tradicionalmente bloqueantes — como aguardar a chegada de um pacote de rede, ler um arquivo do disco ou estabelecer uma conexão de banco de dados — de forma não bloqueante. Ele consegue isso através de um modelo de **multitarefa cooperativo** que é acionado pela sintaxe `async`/`await` do Rust. Quando uma função é marcada como `async`, ela não executa um código imediatamente; em vez disso, ela retorna um `Future`, que é uma promessa de um valor que pode não estar disponível ainda. O runtime do Tokio é o motor que pega esses milhares ou mesmo milhões de `Futures` e os executa em um pequeno número de threads do sistema operacional, trocando entre eles de forma inteligente sempre que um deles é bloqueado por E/S.
+
+A arquitetura do Tokio é construída em torno de alguns componentes centrais que trabalham em harmonia. O **Agendador de Trabalho** é o cérebro do runtime, responsável por decidir qual `Future` deve ser executado a seguir em cada uma das threads de trabalho. Ele é altamente otimizado para reduzir ao máximo a latência e o custo de troca de contexto entre tarefas. O **Sistema de E/S** do Tokio é a sua interface com o mecanismo de E/S do sistema operacional, usando as melhores abstrações disponíveis em cada plataforma — como `epoll` no Linux, `kqueue` no macOS e BSD, e `IOCP` no Windows — para ser notificado quando uma operação de E/S estiver concluída, permitindo que ele retome a `Future` correta no momento exato. O **Timer** é um componente crucial para agendar eventos futuros, como timeouts de rede ou execução de tarefas periódicas, sendo essencial para a construção de aplicações responsivas.
+
+O ecossistema Tokio vai muito além do runtime núcleo, fornecendo uma suíte abrangente de ferramentas que cobrem as necessidades mais comuns no desenvolvimento de servidores. Ele oferece uma implementação robusta de **TCP, UDP e Unix Domain Sockets**, abstrações de alto nível para **clientes e servidores de rede**, utilitários para **processamento simultâneo de canals**, e um **sistema de arquivos assíncrono** que permite operações de E/S de disco não bloqueantes. Esta abordagem de "baterias incluídas" é o que torna o Tokio tão produtivo; em vez de ter que escolher e integrar bibliotecas diferentes para cada protocolo de rede, o desenvolvedor encontra uma stack coesa e interoperável que já foi amplamente testada em produção.
+
+A influência do Tokio é tão profunda que ele se tornou o runtime assíncrono *de facto* para a maioria dos projetos Rust. Bibliotecas de cliente para bancos de dados, clientes HTTP de alto nível como o `reqwest`, e frameworks web modernos como o `Axum` e o `warp` são todos construídos em cima do Tokio, pressupondo sua presença. Esta padronização tácita cria uma enorme sinergia no ecossistema, permitindo que diferentes bibliotecas funcionem perfeitamente juntas, pois todas compartilham o mesmo runtime subjacente e o mesmo modelo de execução.
+
+No final, Tokio é a materialização do modelo de concorrência de Rust em sua forma mais prática e poderosa. Ele permite que os desenvolvedores escrevam servidores que podem lidar com dezenas ou mesmo centenas de milhares de conexões concorrentes em uma única máquina, com um consumo de memória notavelmente baixo e sem a complexidade e os riscos de segurança associados ao *threading* tradicional do sistema operacional. Ele é a peça que falta para que Rust realize sua promessa de permitir um software de sistema que é não apenas seguro contra erros de memória, mas também incrivelmente eficiente na utilização de recursos para cargas de trabalho de rede e E/S intensivas.
+
+Três meses atrás, tomei uma decisão que poderia ter me demitido. Nosso microsserviço Rust estava sangrando dinheiro. As contas da AWS sobem todos os meses. A latência está aumentando. A equipe estava adicionando mais instâncias, mais memória, mais tudo. Problema de dimensionamento clássico, certo? Errado!
+
+Passei um fim de semana arrancando todo o nosso tempo de execução assíncrono. Excluído Tokio. Futuros substituídos por fios simples. Voltei a bloquear E/S como um dinossauro escrevendo código C em 1995.
+
+Na segunda-feira de manhã, coloquei-o em produção.
+
+O canal do Slack ficou em silêncio. Então as métricas começaram a chegar.
+
+O uso de memória caiu 42%. Os tempos de resposta melhoraram em todos os percentis. A latência do P99 caiu de 340ms para 180ms. As projeções de custo mostraram que economizaríamos mais de US$ 127.000 anualmente.
+
+Meu gerente me fez uma pergunta: "Por que não fizemos isso antes?" Boa pergunta.
+
+A mentira assíncrona em que todos acreditávamos, Deixe-me levá-lo de volta a quando aprendi Rust pela primeira vez. Cada tutorial, cada postagem de blog, cada palestra de conferência tinha a mesma mensagem: assíncrono é o futuro. Tokio é essencial. Se você não está escrevendo código assíncrono, está preso no passado.
 
 ```toml
 [dependencies]
@@ -765,33 +819,6 @@ fn buscar_usuario(id: u32) -> Option<String> {
     }
 }
 ```
-
-# ⚙️ [Rust] Tokio
-**Tokio** é muito mais do que uma simples biblioteca na ecologia da linguagem Rust, ela é o alicerce sobre o qual a programação assíncrona prática e de alto desempenho é construída no mundo Rust. Em sua essência, o Tokio é um **runtime assíncrono** que fornece os blocos fundamentais necessários para escrever aplicações de rede que são simultaneamente confiáveis e extremamente eficientes em termos de recursos.
-
-A revolução que o Tokio traz está em como ele permite que o Rust, uma linguagem de programação de sistemas inerentemente sínnca e sem um runtime de coleta de lixo, execute operações de E/S que são tradicionalmente bloqueantes — como aguardar a chegada de um pacote de rede, ler um arquivo do disco ou estabelecer uma conexão de banco de dados — de forma não bloqueante. Ele consegue isso através de um modelo de **multitarefa cooperativo** que é acionado pela sintaxe `async`/`await` do Rust. Quando uma função é marcada como `async`, ela não executa um código imediatamente; em vez disso, ela retorna um `Future`, que é uma promessa de um valor que pode não estar disponível ainda. O runtime do Tokio é o motor que pega esses milhares ou mesmo milhões de `Futures` e os executa em um pequeno número de threads do sistema operacional, trocando entre eles de forma inteligente sempre que um deles é bloqueado por E/S.
-
-A arquitetura do Tokio é construída em torno de alguns componentes centrais que trabalham em harmonia. O **Agendador de Trabalho** é o cérebro do runtime, responsável por decidir qual `Future` deve ser executado a seguir em cada uma das threads de trabalho. Ele é altamente otimizado para reduzir ao máximo a latência e o custo de troca de contexto entre tarefas. O **Sistema de E/S** do Tokio é a sua interface com o mecanismo de E/S do sistema operacional, usando as melhores abstrações disponíveis em cada plataforma — como `epoll` no Linux, `kqueue` no macOS e BSD, e `IOCP` no Windows — para ser notificado quando uma operação de E/S estiver concluída, permitindo que ele retome a `Future` correta no momento exato. O **Timer** é um componente crucial para agendar eventos futuros, como timeouts de rede ou execução de tarefas periódicas, sendo essencial para a construção de aplicações responsivas.
-
-O ecossistema Tokio vai muito além do runtime núcleo, fornecendo uma suíte abrangente de ferramentas que cobrem as necessidades mais comuns no desenvolvimento de servidores. Ele oferece uma implementação robusta de **TCP, UDP e Unix Domain Sockets**, abstrações de alto nível para **clientes e servidores de rede**, utilitários para **processamento simultâneo de canals**, e um **sistema de arquivos assíncrono** que permite operações de E/S de disco não bloqueantes. Esta abordagem de "baterias incluídas" é o que torna o Tokio tão produtivo; em vez de ter que escolher e integrar bibliotecas diferentes para cada protocolo de rede, o desenvolvedor encontra uma stack coesa e interoperável que já foi amplamente testada em produção.
-
-A influência do Tokio é tão profunda que ele se tornou o runtime assíncrono *de facto* para a maioria dos projetos Rust. Bibliotecas de cliente para bancos de dados, clientes HTTP de alto nível como o `reqwest`, e frameworks web modernos como o `Axum` e o `warp` são todos construídos em cima do Tokio, pressupondo sua presença. Esta padronização tácita cria uma enorme sinergia no ecossistema, permitindo que diferentes bibliotecas funcionem perfeitamente juntas, pois todas compartilham o mesmo runtime subjacente e o mesmo modelo de execução.
-
-No final, Tokio é a materialização do modelo de concorrência de Rust em sua forma mais prática e poderosa. Ele permite que os desenvolvedores escrevam servidores que podem lidar com dezenas ou mesmo centenas de milhares de conexões concorrentes em uma única máquina, com um consumo de memória notavelmente baixo e sem a complexidade e os riscos de segurança associados ao *threading* tradicional do sistema operacional. Ele é a peça que falta para que Rust realize sua promessa de permitir um software de sistema que é não apenas seguro contra erros de memória, mas também incrivelmente eficiente na utilização de recursos para cargas de trabalho de rede e E/S intensivas.
-
-Três meses atrás, tomei uma decisão que poderia ter me demitido. Nosso microsserviço Rust estava sangrando dinheiro. As contas da AWS sobem todos os meses. A latência está aumentando. A equipe estava adicionando mais instâncias, mais memória, mais tudo. Problema de dimensionamento clássico, certo? Errado!
-
-Passei um fim de semana arrancando todo o nosso tempo de execução assíncrono. Excluído Tokio. Futuros substituídos por fios simples. Voltei a bloquear E/S como um dinossauro escrevendo código C em 1995.
-
-Na segunda-feira de manhã, coloquei-o em produção.
-
-O canal do Slack ficou em silêncio. Então as métricas começaram a chegar.
-
-O uso de memória caiu 42%. Os tempos de resposta melhoraram em todos os percentis. A latência do P99 caiu de 340ms para 180ms. As projeções de custo mostraram que economizaríamos mais de US$ 127.000 anualmente.
-
-Meu gerente me fez uma pergunta: "Por que não fizemos isso antes?" Boa pergunta.
-
-A mentira assíncrona em que todos acreditávamos, Deixe-me levá-lo de volta a quando aprendi Rust pela primeira vez. Cada tutorial, cada postagem de blog, cada palestra de conferência tinha a mesma mensagem: assíncrono é o futuro. Tokio é essencial. Se você não está escrevendo código assíncrono, está preso no passado.
 
 # ⚙️ [Rust] WebAssembly
 <a href="https://webassembly.org/"><img src="https://cdn.worldvectorlogo.com/logos/webassembly-1.svg" height="77" align="right"></a>
