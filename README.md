@@ -95,12 +95,6 @@ Verificando a instalação correta do compilador da linguagem Rust:
 rustc --version
 ```
 
-Iniciando o diretório: Após a criação do diretório `main`
-
-```sh
-cargo init
-```
-
 Para rodar o Rust no console do terminal: Esse comando usa o compilador do Rust (`rustc`) para transformar seu arquivo-fonte (`exemplo.rs`) em um binário executável.
 
 ```sh
@@ -111,7 +105,25 @@ rustc exemplo.rs
 Iniciando o diretório: Após a criação do arquivo `main`, pode notar a semelhança da estrutura do diretório com as de outras linguagens de programação modernas como JavaScript iniciado através do Node.js.
 
 ```sh
-cargo new helloWorld
+cargo new main
+```
+
+Iniciando: Iniciando o diretório: Após a criação do diretório `main`
+
+```sh
+cargo init
+```
+
+template:
+
+```
+|- src
+| |
+| |- main.rs
+| |- target
+| |- .gitignore 
+| |- cargo.lock
+| |- cargo.toml
 ```
 
 A função `fn main()` não recebe nenhum valor de entrada, visto que os parênteses estão vazios, ela está retornando um tipo de dado chamado `unity`, que é um tipo vazio.
@@ -119,15 +131,17 @@ A função `fn main()` não recebe nenhum valor de entrada, visto que os parênt
 [![main.rs](https://img.shields.io/badge/-main.rs-E6C3A5?style=social&logo=rust&logoColor=E6C3A5)](#)
 
 ```rust
+// Função
 fn main() {
-    println!("Hello, world!");
+    println('Hello, world!') // macro
 }
 ```
 
-Para rodar o projeto:
+Iniciando: Para rodar o projeto:
 
 ```sh
 cargo run
+# Hello, world!
 ```
 
 Para checar a compilação:
@@ -149,7 +163,7 @@ fn main() {
 }
 ```
 
-# ⚙️ [Rust] Variáveis e tipos de dados
+# ⚙️ [Rust] Variáveis, tipos e operadores de dados
 No Rust, o uso de `"{}"` é peculiar porque ele faz parte do sistema de formatação de strings baseado em macros (`println!`, `format!`, `write!` etc.), e não de simples concatenação de strings como em algumas outras linguagens. A questão é, por que Rust usa `{}`? 
 
 1. Pela segurança em tempo de compilação. Em Rust, quando você escreve:
