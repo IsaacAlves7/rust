@@ -383,6 +383,110 @@ fn main() {
 # ⚙️ [Rust] Programação assíncrona
 
 # ⚙️ [Rust] Tratamento de exceções
+Tratamento de Erros em Rust não tem exceções no sentido tradicional (como `try/catch` em Java, Python, etc). Em vez disso, usa um sistema baseado em **tipos de retorno** para tratar erros, dividido em duas categorias principais:
+
+1. Erros Recuperáveis: `Result<T, E>`
+
+Para erros que você espera que possam acontecer e quer tratar (arquivo não encontrado, parse inválido, etc):
+
+```rust
+use std::fs::File;
+use std::io::{self, Read};
+
+fn ler_arquivo(caminho: &str) -> Result<String, io::Error> {
+    let mut arquivo = File::open(caminho)?; // operador ? propaga o erro
+    let mut conteudo = String::new();
+    arquivo.read_to_string(&mut conteudo)?;
+    Ok(conteudo)
+}
+
+fn main() {
+    match ler_arquivo("dados.txt") {
+        Ok(conteudo) => println!("Conteúdo: {}", conteudo),
+        Err(e) => eprintln!("Erro ao ler arquivo: {}", e),
+    }
+}
+```
+
+O operador `?` é o coração do tratamento de erros idiomático em Rust. Ele propaga o erro automaticamente para o chamador, encurtando muito o código comparado a `match` explícito em cada chamada.
+
+```rust
+fn processar() -> Result<i32, String> {
+    let valor = "42".parse::<i32>().map_err(|e| e.to_string())?;
+    Ok(valor * 2)
+}
+```
+
+2. Erros Irrecuperáveis: `panic!` para erros que indicam um bug ou estado inválido do programa, onde continuar não faz sentido:
+
+```rust
+fn dividir(a: i32, b: i32) -> i32 {
+    if b == 0 {
+        panic!("Divisão por zero!");
+    }
+    a / b
+}
+```
+
+Métodos como `.unwrap()` e `.expect("mensagem")` também causam panic se o `Result`/`Option` for `Err`/`None`:
+
+```rust
+let numero: i32 = "abc".parse().expect("deveria ser um número válido");
+// panic com a mensagem se falhar
+```
+
+**Regra geral**: use `panic!` só quando o erro representa um bug (violação de invariante), não para erros esperados do mundo real (arquivo ausente, entrada inválida do usuário, etc — esses merecem `Result`).
+
+3. Tipos de erro customizados para projetos maiores, é comum criar um `enum` de erro próprio:
+
+```rust
+use std::fmt;
+
+#[derive(Debug)]
+enum MeuErro {
+    ArquivoNaoEncontrado,
+    FormatoInvalido(String),
+}
+
+impl fmt::Display for MeuErro {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            MeuErro::ArquivoNaoEncontrado => write!(f, "arquivo não encontrado"),
+            MeuErro::FormatoInvalido(msg) => write!(f, "formato inválido: {}", msg),
+        }
+    }
+}
+
+impl std::error::Error for MeuErro {}
+```
+
+Na prática, para isso costuma-se usar crates como:
+
+- **`thiserror`** — para definir tipos de erro customizados com boilerplate mínimo (bom para bibliotecas)
+- **`anyhow`** — para propagar erros de forma genérica com contexto (bom para aplicações)
+
+```rust
+// Com anyhow
+use anyhow::{Context, Result};
+
+fn processar_config() -> Result<()> {
+    let conteudo = std::fs::read_to_string("config.toml")
+        .context("falha ao ler arquivo de configuração")?;
+    Ok(())
+}
+```
+
+4. `Option<T>` para ausência de valor não é exatamente "erro", mas segue o mesmo padrão para representar "pode não haver valor":
+
+```rust
+fn buscar_usuario(id: u32) -> Option<String> {
+    if id == 1 {
+        Some("Isaac".to_string())
+    } else {
+        None
+    }
+}
+```
 
 # ⚙️ [Rust] Tokio
 **Tokio** é muito mais do que uma simples biblioteca na ecologia da linguagem Rust, ela é o alicerce sobre o qual a programação assíncrona prática e de alto desempenho é construída no mundo Rust. Em sua essência, o Tokio é um **runtime assíncrono** que fornece os blocos fundamentais necessários para escrever aplicações de rede que são simultaneamente confiáveis e extremamente eficientes em termos de recursos.
